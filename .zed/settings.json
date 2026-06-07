@@ -1,0 +1,37 @@
+{
+    "languages": {
+        "JavaScript": {
+            "language_servers": ["!eslint", "..."],
+            "formatter": { "language_server": { "name": "biome" } }
+        },
+        "TypeScript": {
+            "language_servers": ["!eslint", "..."],
+            "formatter": { "language_server": { "name": "biome" } }
+        },
+        "TSX": {
+            "language_servers": ["!eslint", "..."],
+            "formatter": { "language_server": { "name": "biome" } }
+        },
+        "Svelte": {
+            "language_servers": ["!eslint", "..."],
+            "formatter": { "language_server": { "name": "biome" } }
+        },
+        "HTML": { "formatter": { "language_server": { "name": "biome" } } },
+        "JSON": { "formatter": { "language_server": { "name": "biome" } } },
+        "JSONC": { "formatter": { "language_server": { "name": "biome" } } },
+        "Astro": { "formatter": { "language_server": { "name": "biome" } } },
+        "CSS": { "formatter": { "language_server": { "name": "biome" } } }
+    },
+    "lsp": {
+        "biome": {
+            "binary": {
+                "path": "./node_modules/@biomejs/biome/bin/biome",
+                "arguments": ["lsp-proxy"]
+            },
+            "settings": {
+                "config_path": "./biome.json",
+                "require_config_file": true
+            }
+        }
+    }
+}

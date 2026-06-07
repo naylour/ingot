@@ -1,0 +1,71 @@
+{
+    "$schema": "https://biomejs.dev/schemas/2.4.16/schema.json",
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
+    },
+    "files": {
+        "includes": ["**", "!!**/dist", "!!**/build", "!!**/generated"]
+    },
+    "formatter": {
+        "enabled": true,
+        "indentStyle": "space",
+        "indentWidth": 4,
+        "lineWidth": 90,
+        "lineEnding": "lf"
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "recommended": true,
+            "a11y": {
+                "useValidLang": "info"
+            },
+            "correctness": {
+                "noEmptyPattern": "warn",
+                "noUnusedVariables": "warn",
+                "noUnusedImports": "warn"
+            },
+            "style": {
+                "noParameterAssign": "error",
+                "useTemplate": "error",
+                "useImportType": "error"
+            },
+            "suspicious": {
+                "noExplicitAny": "warn",
+                "noConsole": {
+                    "level": "warn",
+                    "options": {
+                        "allow": ["debug"]
+                    }
+                }
+            },
+            "nursery": {
+                "useSortedClasses": {
+                    "level": "info",
+                    "options": {
+                        "attributes": ["classList", "class"],
+                        "functions": ["cn", "clsx", "cva", "tw", "tw.*"]
+                    }
+                }
+            }
+        }
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "single",
+            "arrowParentheses": "asNeeded",
+            "semicolons": "always",
+            "trailingCommas": "all"
+        }
+    },
+    "assist": {
+        "enabled": true,
+        "actions": {
+            "source": {
+                "organizeImports": "on"
+            }
+        }
+    }
+}

@@ -7,11 +7,7 @@
         "typescript": "^5"
     },
     "workspaces": {
-        "packages": [
-            "apps/client",
-            "apps/bot",
-            "infra/env"
-        ],
+        "packages": [],
         "catalog": {
             "@biomejs/biome": "2.4.16",
             "@types/bun": "1.3.14"

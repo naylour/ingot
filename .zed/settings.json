@@ -20,12 +20,14 @@
         "JSON": { "formatter": { "language_server": { "name": "biome" } } },
         "JSONC": { "formatter": { "language_server": { "name": "biome" } } },
         "Astro": { "formatter": { "language_server": { "name": "biome" } } },
-        "CSS": { "formatter": { "language_server": { "name": "biome" } } }
+        "CSS": { "formatter": { "language_server": { "name": "biome" } } },
+        "Pkl": { "language_servers": ["!pkl"] }
     },
+
     "lsp": {
         "biome": {
             "binary": {
-                "path": "./node_modules/@biomejs/biome/bin/biome",
+                "path": "~/.local/share/mise/shims/biome",
                 "arguments": ["lsp-proxy"]
             },
             "settings": {

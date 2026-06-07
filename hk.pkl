@@ -1,0 +1,73 @@
+amends "package://github.com/jdx/hk/releases/download/v1.46.0/hk@1.46.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v1.46.0/hk@1.46.0#/Builtins.pkl"
+
+local webLinters = new Mapping<String, Step> {
+    ["biome"] {
+        glob = List("**/*.ts", "**/*.js", "**/*.svelte", "**/*.css", "**/*.json")
+        exclude = List("**/node_modules/**", "**/dist/**", "**/build/**", "**/.svelte-kit/**", "**/generated/**")
+        check = "biome check {{files}}"
+        fix   = "biome check --write {{files}}"
+    }
+}
+
+local rustLinters = new Mapping<String, Step> {
+    ["cargo-fmt"] {
+        glob = List("**/*.rs")
+        check = "cargo fmt --all --check"
+        fix   = "cargo fmt --all"
+    }
+    ["cargo-clippy"] {
+        glob     = List("**/*.rs", "**/Cargo.toml")
+        check    = "cargo clippy -- -D warnings"
+        depends  = List("cargo-fmt")
+    }
+}
+
+hooks {
+    // Запускается перед каждым git commit
+    // fix = true  → запускает fix-команды и сам стейджит исправленные файлы
+    // stash = "git" → прячет unstaged изменения, чтобы проверять только то что коммитим
+    ["pre-commit"] {
+        fix   = true
+        stash = "git"
+        steps = new Mapping {
+            ...webLinters
+            ...rustLinters
+        }
+    }
+
+    // Проверяет сообщение коммита на соответствие Conventional Commits
+    // Формат: <тип>(<область>): <описание>
+    // Примеры: feat: add auth, fix(api): handle timeout, chore: update deps
+    ["commit-msg"] {
+        steps {
+            ["check-conventional-commit"] = Builtins.check_conventional_commit
+        }
+    }
+
+    // Запускается перед git push — только проверяет, ничего не меняет
+    // Проверяет все файлы изменённые в ветке относительно main
+    ["pre-push"] {
+        steps = new Mapping {
+            ...webLinters
+            ...rustLinters
+        }
+    }
+
+    // Для ручного запуска: hk fix
+    ["fix"] {
+        fix   = true
+        steps = new Mapping {
+            ...webLinters
+            ...rustLinters
+        }
+    }
+
+    // Для ручного запуска: hk check
+    ["check"] {
+        steps = new Mapping {
+            ...webLinters
+            ...rustLinters
+        }
+    }
+}

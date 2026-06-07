@@ -1,0 +1,8 @@
+default_provider = "ingot-crypto"
+
+[providers.ingot-crypto]
+type = "age"
+recipients = ["age1ldm5xzq85pu7d4xg3spehhgt4ej57pcn0usqrpfe9nu8fc8edphq3md5c6"]
+
+[secrets]
+MY_SECRET= { provider = "ingot-crypto", value = "YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBENjhBMlR4MlM4d3hRZ2Z4RWM1RWFCQURlNVFlbFdzV1dhL1hINCs0akIwCm1DMlJJajU3aFVtM2pBWk9RaXU0VHZQbzQxUVBSQXZHL1pJVGJQTm5oWEEKLT4gNiMtZ3JlYXNlICRzTHxIIC5dUkAnRE1+IDNnUSNdOykuClZUN0p5RHBpbE85QktQVE5zdjZyaEJpT2pEQlNYeWE0c2RqUzJDSXQ3UjlheDBabGVsMWZHUk5SYnFtV09Qc2EKNVRabjRocnBmakJlSVBZVHQyQytZeG1uWk9mYXQxYWhZbHNtNmdPL1hiYVM2bk0zNThBZAotLS0gSjZqYTFZcUFVcFp0VzIxRmg1RitrZFZzQTJRRTR2ZDM1TmdUbXg2b1JWNArTqscXGVmqe+TLF4cFenHo51tQCdFhnY3UvtKoSuaWfN/T2Gdk", description = "Example secret" }

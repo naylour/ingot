@@ -1,0 +1,12 @@
+[custom.ingot]
+command = "echo 'INGOT'"
+when = true
+symbol = "⚙ "
+style = "bold cyan"
+format = "[$symbol$output]($style) "
+
+[rust]
+disabled = true
+
+[bun]
+disabled = true
